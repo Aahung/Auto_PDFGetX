@@ -30,9 +30,9 @@ HWND hwnd;
 #define IDC_MAIN_BUTTON 101
 #define IDC_GENERATE_FILE_LIST_BUTTON 102
 #define IDC_LOAD_FILE_LIST_BUTTON 103
+#define IDC_MAIN_EDIT	104
 
-HWND hPDFGetXWnd;
-std::vector<std::string> file_paths;
+HWND hPDFGetXWnd, hEdit;
 
 
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
@@ -73,7 +73,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow
         WS_OVERLAPPEDWINDOW,                // Window style
 
         // Size and position
-        CW_USEDEFAULT, CW_USEDEFAULT, 315, 160,
+        CW_USEDEFAULT, CW_USEDEFAULT, 500, 160,
 
         NULL,       // Parent window    
         NULL,       // Menu
@@ -111,8 +111,16 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		{
 					  
 			aStealer = Stealer();
-			log("Please select chi files.");
-			log("----------------------------\r\nWelcome to use \"Auto PDFGetX\", \r\nPlease open the PDFGetX window and right click on the following:\r\nSample: button, \r\nReset Data button, \r\nGet I(Q) button, \r\nCalc Correction button, \r\nGet S(Q) button, \r\nGet G(Q) button. \r\n");
+			log(">>>Before everything, config PDFGetX2 appreporately and press \"reset data\" button firse<<<");
+			log("Then, input folder path (starts with \"C:\\\") where .chi files located");
+			log("---tip: the folder can have subfolder, and don't worry about other files.");
+			log("Press \"Generate file list\" button, and then \"Load file list\"");
+			log("----------------------------\r\nWelcome to use \"Auto PDFGetX\", ");
+			log("If you finished the steps metioned before,");
+			log("Please open the PDFGetX window and right click on the following:");
+			log("Sample: button, \r\nReset Data button, \r\nGet I(Q) button, \r\nCalc Correction button, \r\nGet S(Q) button, \r\nGet G(Q) button. \r\n");
+			
+			log("After that, start!");
 
 			hPDFGetXWnd = FindWindow(NULL, L"PDFgetX2 v1.0 build 20050312");
 			if (!hPDFGetXWnd)
@@ -128,9 +136,9 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 				WS_TABSTOP|WS_VISIBLE|
 				WS_CHILD|BS_DEFPUSHBUTTON,
 				100,
-				20,
-				100,
-				24,
+				80,
+				120,
+				34,
 				hwnd,
 				(HMENU)IDC_MAIN_BUTTON,
 				GetModuleHandle(NULL),
@@ -146,8 +154,8 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 				L"Generate file list",
 				WS_TABSTOP | WS_VISIBLE |
 				WS_CHILD | BS_DEFPUSHBUTTON,
-				100,
-				50,
+				314,
+				30,
 				100,
 				24,
 				hwnd,
@@ -165,8 +173,8 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 				L"Load file list",
 				WS_TABSTOP | WS_VISIBLE |
 				WS_CHILD | BS_DEFPUSHBUTTON,
-				100,
-				80,
+				300,
+				85,
 				100,
 				24,
 				hwnd,
@@ -179,6 +187,29 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 				(WPARAM)hfDefault,
 				MAKELPARAM(FALSE, 0)
 				);
+			//Create an edit box
+			hEdit=CreateWindowEx(WS_EX_CLIENTEDGE,
+				TEXT("EDIT"),
+				TEXT(""),
+				WS_CHILD|WS_VISIBLE|
+				ES_MULTILINE|ES_AUTOVSCROLL,
+				80,
+				30,
+				230,
+				24,
+				hwnd,
+				(HMENU)IDC_MAIN_EDIT,
+				GetModuleHandle(NULL),
+				NULL);
+			SendMessage(hEdit,
+				WM_SETFONT,
+				(WPARAM)hfDefault,
+				MAKELPARAM(FALSE,0));
+			SendMessage(hEdit,
+				WM_SETTEXT,
+				NULL,
+				(LPARAM)TEXT("C:\\")
+			);
 		}
 		return 0;
 	case WM_COMMAND:
@@ -191,23 +222,30 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 						Robber aRobber = Robber(aStealer.getSampleBtnHandle(), aStealer.getResetBtnHandle(), aStealer.getGetIBtnHandle(), 
 							aStealer.getCalCBtnHandle(), aStealer.getGetSBtnHandle(), aStealer.getGetGBtnHandle(), 
 							aStealer.getStatusTextHandle());
-						for (int i = 0; true; i ++)
+						
+						bool fail = false;
+						int count = 0;
+						while (1)
 						{
-							if (i == file_paths.size())
-							{
-								break;
-							}
-							if (aRobber.process(file_paths[i]))
+							std::string file_path = aFolder.getNextFilePath(!fail);
+							if (file_path == "") break;
+							fail = !(aRobber.process(file_path));
+							if (!fail)
 							{
 								std::cout << " finished" << std::endl;
-							
+								file_path += " finished";
+								count ++;
 							} else {
-								file_paths.push_back(file_paths[i]);
 								std::cout << " failed" << std::endl;
+								file_path += " failed";
 							}
+							log(string2char(file_path));
 							std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
 						}
-						::MessageBox(hwnd, L"Finished~.", L"Success", MB_OK);
+						std::string _log = "Processed ";
+						_log += to_string(count);
+						_log += " files.";
+						::MessageBox(hwnd, string2ws(_log).c_str(), L"Success", MB_OK);
 					}
 					else 
 					{
@@ -216,20 +254,25 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 				}
 				return 0;
 				case IDC_GENERATE_FILE_LIST_BUTTON:
+					char szBuf[20480];
+					LONG lResult;
+					lResult = SendMessageA( hEdit, WM_GETTEXT, sizeof( szBuf ) / sizeof( szBuf[0] ), (LPARAM)szBuf );
+
 					aFolder = Folder();
-					aFolder.selectFolder();
+					aFolder.selectFolder(szBuf);
 					break;
 				case IDC_LOAD_FILE_LIST_BUTTON:
-					std::ifstream fl("file_list.txt");
-					if (!fl) {
-						::MessageBox(hwnd, L"Please put file list with this program", L"Warning", MB_OK);
-					}
-					std::string line;
-					while (std::getline(fl, line))
+					int fileNum = aFolder.loadFileList();
+					if (fileNum == -1)
 					{
-						file_paths.push_back(line);
+						::MessageBox(hwnd, L"No file list fount", L"Error", MB_OK);
+					} else 
+					{
+						std::string _log = "Loaded "; 
+						_log += to_string(fileNum); 
+						_log += " files.";
+						::MessageBox(hwnd, string2ws(_log).c_str(), L"Error", MB_OK);
 					}
-					::MessageBox(hwnd, L"Loaded file list", L"Warning", MB_OK);
 					break;
 			}
 			return 0;

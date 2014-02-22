@@ -18,6 +18,7 @@ public:
 private:
 	HWND hSampleBtn, hResetBtn, hGetIBtn, hCalCBtn, hGetSBtn, hGetGBtn, hStatusText;
 	std::string GetStatusText();
+	bool processStep(unsigned int step);
 };
 
 Robber::Robber(HWND _hSampleBtn, HWND _hResetBtn, HWND _hGetIBtn, HWND _hCalCBtn, HWND _hGetSBtn, HWND _hGetGBtn, HWND _hStatusText)
@@ -93,50 +94,76 @@ bool Robber::process(std::string file_path)
 		Sleep(200);
 		log("Selected file.");
 	} while (::FindWindow(NULL, L"Please select sample data file -->") != NULL);
-	::SendMessage(hResetBtn, BM_CLICK, 0, 0);
-	log("Trying to reset data.");
-	while (GetStatusText().find("All data were reset") == std::string::npos) {
-		Sleep(200);
-		if (GetStatusText().find("fail") != std::string::npos) return false;
+	
+	for (int i = 1; i <= 5; i ++)
+	{
+		if (!processStep(i))
+		{
+			return false;
+		}
 	}
-	log("Reseted data.");
-	::SendMessage(hGetIBtn, BM_CLICK, 0, 0);
-	log("Trying to get I(Q).");
-	while (GetStatusText().find("Start to Get I(q) ... successfully completed") == std::string::npos) {
-		Sleep(200);
-		if (GetStatusText().find("fail") != std::string::npos) return false;
-	}
-	log("I(Q) got.");
-	::SendMessage(hCalCBtn, BM_CLICK, 0, 0);
-	log("Trying to correct calculation.");
-	while (GetStatusText().find("Start to calculate corrections ... successfully finished") == std::string::npos) {
-		Sleep(200);
-		if (GetStatusText().find("fail") != std::string::npos) return false;
-	}
-	log("Calculation corrected.");
-	::SendMessage(hGetSBtn, BM_CLICK, 0, 0);
-	log("Trying to get S(Q).");
-	while (GetStatusText().find("Start to obtain S(q) ... successfully completed") == std::string::npos) {
-		Sleep(200);
-		if (GetStatusText().find("fail") != std::string::npos) return false;
-	}
-	log("S(Q) got.");
-	::SendMessage(hGetGBtn, BM_CLICK, 0, 0);
-	log("Trying to get G(R).");
-	while (GetStatusText().find("Start to obtain G(r) ... successfully completed") == std::string::npos) {
-		Sleep(200);
-		if (GetStatusText().find("fail") != std::string::npos) return false;
-	}
-	log("G(R) got.");
 	return true;
 }
 
 std::string Robber::GetStatusText()
 {
-	Sleep(50);
+	Sleep(100);
 	char szBuf[2048];
 	LONG lResult;
 	lResult = SendMessageA(hStatusText, WM_GETTEXT, sizeof(szBuf) / sizeof(szBuf[0]), (LPARAM)szBuf);
 	std::string text(szBuf);
 	return text;
+}
+
+bool Robber::processStep(unsigned int step)
+{
+	std::string tryStr, searchSuccessStr, successStr;
+	HWND h;
+	switch (step)
+	{
+	case 1:
+		tryStr = "Trying to reset data...";
+		searchSuccessStr = "All data were reset";
+		successStr = "Data reset.";
+		h = hResetBtn;
+		break;
+	case 2:
+		tryStr = "Trying to get I(q)...";
+		searchSuccessStr = "Start to Get I(q) ... successfully completed";
+		successStr = "I(q) got.";
+		h = hGetIBtn;
+		break;
+	case 3:
+		tryStr = "Trying to correct calculation...";
+		searchSuccessStr = "Start to calculate corrections ... successfully finished";
+		successStr = "Calculation corrected.";
+		h = hCalCBtn;
+		break;
+	case 4:
+		tryStr = "Trying to get S(q)...";
+		searchSuccessStr = "Start to obtain S(q) ... successfully completed";
+		successStr = "S(q) got.";
+		h = hGetSBtn;
+		break;
+	case 5:
+		tryStr = "Trying to get G(r)...";
+		searchSuccessStr = "Start to obtain G(r) ... successfully completed";
+		successStr = "G(r) got.";
+		h = hGetGBtn;
+		break;
+	default:
+		return true;
+		break;
+	}
+	::SendMessage(h, BM_CLICK, 0, 0);
+	
+	log(string2char(tryStr));
+	int tried = 0;
+	while (GetStatusText().find(string2char(searchSuccessStr)) == std::string::npos) {
+		Sleep(200);
+		if (GetStatusText().find("fail") != std::string::npos) return false;
+		if (tried ++ > 9) return false;
+	}
+	log(string2char(successStr));
+	return true;
 }

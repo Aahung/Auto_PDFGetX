@@ -51,4 +51,39 @@ namespace console_log
 		fl.close();
 	}
 
+	char * string2char(std::string str)
+	{
+		size_t size = str.size();
+		char * ch = new char[size + 1];
+		for (int i = 0; i < size; i ++)
+		{
+			ch[i] = str[i];
+		}
+		ch[size] = '\0';
+		return ch;
+	}
+
+	std::wstring string2ws(const std::string& s)
+	{
+		int len;
+		int slength = (int)s.length() + 1;
+		len = MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, 0, 0); 
+		wchar_t* buf = new wchar_t[len];
+		MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, buf, len);
+		std::wstring r(buf);
+		delete[] buf;
+		return r;
+	}
+
+	std::string ws2string(WCHAR ws[])
+	{
+		//convert from wide char to narrow char array
+		char ch[260];
+		char DefChar = ' ';
+		WideCharToMultiByte(CP_ACP,0,ws,-1, ch,260,&DefChar, NULL);
+    
+		//A std:string  using the char* constructor.
+		std::string ss(ch);
+		return ss;
+	}
 }

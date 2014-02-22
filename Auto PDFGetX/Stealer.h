@@ -29,6 +29,13 @@ private:
 
 Stealer::Stealer()
 {
+	hSampleBtn = NULL;
+	hResetBtn = NULL; 
+	hGetIBtn = NULL;
+	hCalCBtn = NULL;
+	hGetSBtn = NULL;
+	hGetGBtn = NULL; 
+	hStatusText = NULL;
 }
 
 Stealer::~Stealer()
@@ -89,7 +96,8 @@ void Stealer::stealHandleByPoint(POINT &p)
 
 bool Stealer::allHandleStolen()
 {
-	return hSampleBtn && hResetBtn && hGetIBtn && hCalCBtn && hGetSBtn && hGetGBtn && hStatusText;
+	bool ready = (hSampleBtn && hResetBtn && hGetIBtn && hCalCBtn && hGetSBtn && hGetGBtn && hStatusText);
+	return ready;
 }
 
 HWND Stealer::getSampleBtnHandle()
