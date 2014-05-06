@@ -25,6 +25,7 @@ using namespace console_log;
 Stealer aStealer;
 Folder aFolder;
 HHOOK MouseHook;
+bool controlsControled = false;
 HWND hwnd;
 
 #define IDC_MAIN_BUTTON 101
@@ -38,13 +39,14 @@ HWND hPDFGetXWnd, hEdit;
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 LRESULT CALLBACK MouseHookProc(int nCode, WPARAM wParam, LPARAM lParam){
-        PKBDLLHOOKSTRUCT k = (PKBDLLHOOKSTRUCT)(lParam);
-        POINT p;
-        if(wParam == WM_RBUTTONDOWN)
-        { 
-			// right button clicked 
-			aStealer.stealHandleByPoint(p);
-        }
+	if (controlsControled) return 0;
+    PKBDLLHOOKSTRUCT k = (PKBDLLHOOKSTRUCT)(lParam);
+    POINT p;
+    if(wParam == WM_RBUTTONDOWN)
+    { 
+		// right button clicked 
+		aStealer.stealHandleByPoint(p);
+    }
 	return 0;
 }
 
@@ -118,16 +120,20 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			log("----------------------------\r\nWelcome to use \"Auto PDFGetX\", ");
 			log("If you finished the steps metioned before,");
 			log("Please open the PDFGetX window and right click on the following:");
-			log("Sample: button, \r\nReset Data button, \r\nGet I(Q) button, \r\nCalc Correction button, \r\nGet S(Q) button, \r\nGet G(Q) button. \r\n");
-			
+			log("Sample: button,  \r\n Background button, \r\nReset Data button, \r\nGet I(Q) button, \r\nCalc Correction button, \r\nGet S(Q) button, \r\nGet G(Q) button. \r\n");
 			log("After that, start!");
 
 			hPDFGetXWnd = FindWindow(NULL, L"PDFgetX2 v1.0 build 20050312");
 			if (!hPDFGetXWnd)
 			{
-				//MessageBox(hwnd, L"Please open PDFgetX2 v1.0 build 20050312 first.", L"Warning", MB_OK);
+				MessageBox(hwnd, L"Cannot find PDFGetX program, please open it first.", L"Warning", MB_OK);
 				//PostQuitMessage(0);  3442 2752 lijing ¿ÓΩı
 				//return 0;
+			}
+			else {
+				if (aStealer.stealHandleAutomatically(hPDFGetXWnd)) {
+					controlsControled = true;
+				}
 			}
 			HGDIOBJ hfDefault=GetStockObject(DEFAULT_GUI_FONT);
 			HWND hWndButton=CreateWindowEx(NULL,

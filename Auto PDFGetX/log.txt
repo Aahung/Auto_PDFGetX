@@ -1,0 +1,29 @@
+1399344839: >>>Before everything, config PDFGetX2 appreporately and press "reset data" button firse<<<
+1399344839: Then, input folder path (starts with "C:\") where .chi files located
+1399344839: ---tip: the folder can have subfolder, and don't worry about other files.
+1399344839: Press "Generate file list" button, and then "Load file list"
+1399344839: ----------------------------
+Welcome to use "Auto PDFGetX", 
+1399344839: If you finished the steps metioned before,
+1399344839: Please open the PDFGetX window and right click on the following:
+1399344839: Sample: button,  
+ Background button, 
+Reset Data button, 
+Get I(Q) button, 
+Calc Correction button, 
+Get S(Q) button, 
+Get G(Q) button. 
+
+1399344839: After that, start!
+1399344839: trying to get steal the button automatically...
+1399344839: Sample button got.
+1399344839: Sample Background button got.
+1399344839: Reset button got.
+1399344839: Get I button got.
+1399344839: Calc Correction button got.
+1399344840: Get S button got.
+1399344840: Get G button got.
+1399344840: Status Box spied.
+1399344840: All the objects have been taken automatically, you do not need to right click. 
+1399344840: :-)
+1399344840: Disabled right click listener.
