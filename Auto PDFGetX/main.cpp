@@ -89,6 +89,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow
     }
 
     ShowWindow(hwnd, nCmdShow);
+    SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 500, 160, SWP_NOREDRAW | SWP_SHOWWINDOW);
 
 	MouseHook = SetWindowsHookEx(WH_MOUSE_LL,MouseHookProc,hInstance,0);
 
@@ -133,6 +134,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			else {
 				if (aStealer.stealHandleAutomatically(hPDFGetXWnd)) {
 					controlsControled = true;
+					UnhookWindowsHookEx(MouseHook);
 				}
 			}
 			HGDIOBJ hfDefault=GetStockObject(DEFAULT_GUI_FONT);

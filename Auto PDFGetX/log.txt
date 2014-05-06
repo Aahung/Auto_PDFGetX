@@ -1,12 +1,12 @@
-1399344839: >>>Before everything, config PDFGetX2 appreporately and press "reset data" button firse<<<
-1399344839: Then, input folder path (starts with "C:\") where .chi files located
-1399344839: ---tip: the folder can have subfolder, and don't worry about other files.
-1399344839: Press "Generate file list" button, and then "Load file list"
-1399344839: ----------------------------
+06.05.2014 12:01:22: >>>Before everything, config PDFGetX2 appreporately and press "reset data" button firse<<<
+06.05.2014 12:01:22: Then, input folder path (starts with "C:\") where .chi files located
+06.05.2014 12:01:23: ---tip: the folder can have subfolder, and don't worry about other files.
+06.05.2014 12:01:23: Press "Generate file list" button, and then "Load file list"
+06.05.2014 12:01:23: ----------------------------
 Welcome to use "Auto PDFGetX", 
-1399344839: If you finished the steps metioned before,
-1399344839: Please open the PDFGetX window and right click on the following:
-1399344839: Sample: button,  
+06.05.2014 12:01:23: If you finished the steps metioned before,
+06.05.2014 12:01:23: Please open the PDFGetX window and right click on the following:
+06.05.2014 12:01:23: Sample: button,  
  Background button, 
 Reset Data button, 
 Get I(Q) button, 
@@ -14,16 +14,77 @@ Calc Correction button,
 Get S(Q) button, 
 Get G(Q) button. 
 
-1399344839: After that, start!
-1399344839: trying to get steal the button automatically...
-1399344839: Sample button got.
-1399344839: Sample Background button got.
-1399344839: Reset button got.
-1399344839: Get I button got.
-1399344839: Calc Correction button got.
-1399344840: Get S button got.
-1399344840: Get G button got.
-1399344840: Status Box spied.
-1399344840: All the objects have been taken automatically, you do not need to right click. 
-1399344840: :-)
-1399344840: Disabled right click listener.
+06.05.2014 12:01:23: After that, start!
+06.05.2014 12:01:23: trying to get steal the button automatically...
+06.05.2014 12:01:23: Sample button got.
+06.05.2014 12:01:23: Sample Background button got.
+06.05.2014 12:01:23: Reset button got.
+06.05.2014 12:01:23: Get I button got.
+06.05.2014 12:01:23: Calc Correction button got.
+06.05.2014 12:01:23: Get S button got.
+06.05.2014 12:01:23: Get G button got.
+06.05.2014 12:01:23: Status Box spied.
+06.05.2014 12:01:23: All the objects have been taken automatically, you do not need to right click. 
+06.05.2014 12:01:23: :-)
+06.05.2014 12:01:23: Disabled right click listener.
+06.05.2014 12:01:29: File path box Found.
+06.05.2014 12:01:29: Trying to fill file path into box.
+06.05.2014 12:01:29: Checked file path successfully filled.
+06.05.2014 12:01:29: Selected file.
+06.05.2014 12:01:29: Trying to reset data...
+06.05.2014 12:01:29: Data reset.
+06.05.2014 12:01:29: Trying to get I(q)...
+06.05.2014 12:01:30: I(q) got.
+06.05.2014 12:01:30: Trying to correct calculation...
+06.05.2014 12:01:31: Calculation corrected.
+06.05.2014 12:01:31: Trying to get S(q)...
+06.05.2014 12:01:32: S(q) got.
+06.05.2014 12:01:32: Trying to get G(r)...
+06.05.2014 12:01:39: G(r) got.
+06.05.2014 12:01:40: C:\Users\Xinhong\Downloads\PDFgetx2\BG_avg.chi finished
+06.05.2014 12:01:40: C:\Users\Xinhong\Downloads\PDFgetx2\BG_avg.chi successfully processed in 1 try(tries).
+06.05.2014 12:01:40: File path box Found.
+06.05.2014 12:01:40: Trying to fill file path into box.
+06.05.2014 12:01:40: Checked file path successfully filled.
+06.05.2014 12:01:40: Selected file.
+06.05.2014 12:01:40: Trying to reset data...
+06.05.2014 12:01:40: Data reset.
+06.05.2014 12:01:40: Trying to get I(q)...
+06.05.2014 12:01:41: I(q) got.
+06.05.2014 12:01:41: Trying to correct calculation...
+06.05.2014 12:01:42: Calculation corrected.
+06.05.2014 12:01:42: Trying to get S(q)...
+06.05.2014 12:01:43: S(q) got.
+06.05.2014 12:01:43: Trying to get G(r)...
+06.05.2014 12:01:48: G(r) got.
+06.05.2014 12:01:48: C:\Users\Xinhong\Downloads\PDFgetx2\Zr46Cu46Al8_d3_1x1_p5p5-00176 - Copy (2).chi finished
+06.05.2014 12:01:48: C:\Users\Xinhong\Downloads\PDFgetx2\Zr46Cu46Al8_d3_1x1_p5p5-00176 - Copy (2).chi successfully processed in 1 try(tries).
+06.05.2014 12:01:49: File path box Found.
+06.05.2014 12:01:49: Trying to fill file path into box.
+06.05.2014 12:01:49: Checked file path successfully filled.
+06.05.2014 12:01:49: Selected file.
+06.05.2014 12:01:49: Trying to reset data...
+06.05.2014 12:01:49: Data reset.
+06.05.2014 12:01:49: Trying to get I(q)...
+06.05.2014 12:01:50: I(q) got.
+06.05.2014 12:01:50: Trying to correct calculation...
+06.05.2014 12:01:51: Calculation corrected.
+06.05.2014 12:01:51: Trying to get S(q)...
+06.05.2014 12:01:52: S(q) got.
+06.05.2014 12:01:52: Trying to get G(r)...
+06.05.2014 12:01:58: G(r) got.
+06.05.2014 12:01:58: C:\Users\Xinhong\Downloads\PDFgetx2\Zr46Cu46Al8_d3_1x1_p5p5-00176 - Copy.chi finished
+06.05.2014 12:01:58: C:\Users\Xinhong\Downloads\PDFgetx2\Zr46Cu46Al8_d3_1x1_p5p5-00176 - Copy.chi successfully processed in 1 try(tries).
+06.05.2014 12:01:58: File path box Found.
+06.05.2014 12:01:58: Trying to fill file path into box.
+06.05.2014 12:01:58: Checked file path successfully filled.
+06.05.2014 12:01:58: Selected file.
+06.05.2014 12:01:58: Trying to reset data...
+06.05.2014 12:01:59: Data reset.
+06.05.2014 12:01:59: Trying to get I(q)...
+06.05.2014 12:01:59: I(q) got.
+06.05.2014 12:01:59: Trying to correct calculation...
+06.05.2014 12:02:01: Calculation corrected.
+06.05.2014 12:02:01: Trying to get S(q)...
+06.05.2014 12:02:01: S(q) got.
+06.05.2014 12:02:01: Trying to get G(r)...

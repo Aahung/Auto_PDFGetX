@@ -96,9 +96,9 @@ bool Robber::process(std::string file_path)
 
 std::string Robber::GetStatusText()
 {
-	Sleep(100);
 	char szBuf[2048];
 	LONG lResult;
+	//lResult = SendMessageTimeoutA(hStatusText, WM_GETTEXT, sizeof(szBuf) / sizeof(szBuf[0]), (LPARAM)szBuf, 0x0000, 5000, NULL);
 	lResult = SendMessageA(hStatusText, WM_GETTEXT, sizeof(szBuf) / sizeof(szBuf[0]), (LPARAM)szBuf);
 	std::string text(szBuf);
 	return text;
@@ -148,10 +148,17 @@ bool Robber::processStep(unsigned int step)
 	
 	log(string2char(tryStr));
 	int tried = 0;
-	while (GetStatusText().find(string2char(searchSuccessStr)) == std::string::npos) {
-		Sleep(200);
-		if (GetStatusText().find("fail") != std::string::npos) return false;
-		if (tried ++ > 5) return false;
+	while (tried ++ <= 5) {
+		try {
+			std::string statusText = GetStatusText();
+			if (statusText.find(string2char(searchSuccessStr)) != std::string::npos) break;
+			if (statusText.find("fail") != std::string::npos) return false;
+			
+		} catch(int e) {
+
+		} 
+		if (tried > 5) return false;
+		Sleep(250);
 	}
 	log(string2char(successStr));
 	return true;

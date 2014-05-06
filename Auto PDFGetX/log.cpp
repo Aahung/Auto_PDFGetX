@@ -10,6 +10,9 @@ namespace console_log
 	{
 		std::ofstream log_file(LOG_FILE);//initial log file
 		AllocConsole();
+		// set the window to top
+		HWND hwnd = GetConsoleWindow();
+		SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 500, 500, SWP_NOREDRAW | SWP_SHOWWINDOW);
 
 		HANDLE handle_out = GetStdHandle(STD_OUTPUT_HANDLE);
 		int hCrt = _open_osfhandle((long)handle_out, _O_TEXT);
@@ -30,10 +33,15 @@ namespace console_log
 	{
 		time_t now;
 		time(&now);
+		struct tm timeinfo;
+		localtime_s(&timeinfo, &now);
+		char buffer[32];
+		// Format: Mo, 15.06.2009 20:20:00
+		std::strftime(buffer, 32, "%d.%m.%Y %H:%M:%S", &timeinfo);  
 
 		std::ofstream fl;
 		fl.open(LOG_FILE, std::ios_base::app | std::ios_base::out);
-		fl << now << ": " << text << std::endl;
+		fl << buffer << ": " << text << std::endl;
 		std::cout << text << std::endl;
 		fl.close();
 	}
