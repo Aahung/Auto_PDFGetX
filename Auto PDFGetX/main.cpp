@@ -24,34 +24,26 @@ using namespace console_log;
 
 Stealer aStealer;
 Folder aFolder;
-HHOOK MouseHook;
 bool controlsControled = false;
 HWND hwnd;
+HINSTANCE hInstanceGlobal; // for mouse hook
 
 #define IDC_MAIN_BUTTON 101
 #define IDC_GENERATE_FILE_LIST_BUTTON 102
 #define IDC_LOAD_FILE_LIST_BUTTON 103
 #define IDC_MAIN_EDIT	104
+#define IDC_SAMPLE_PREFIX_EDIT	105
+#define IDC_BG_PREFIX_EDIT	106
 
-HWND hPDFGetXWnd, hEdit;
+HWND hPDFGetXWnd, hEdit, hSamplePrefixEdit, hBgPrefixEdit;
 
 
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
-LRESULT CALLBACK MouseHookProc(int nCode, WPARAM wParam, LPARAM lParam){
-	if (controlsControled) return 0;
-    PKBDLLHOOKSTRUCT k = (PKBDLLHOOKSTRUCT)(lParam);
-    POINT p;
-    if(wParam == WM_RBUTTONDOWN)
-    { 
-		// right button clicked 
-		aStealer.stealHandleByPoint(p);
-    }
-	return 0;
-}
 
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow)
 {
+	hInstanceGlobal = hInstance;
 
 	initializeLog();
 
@@ -71,7 +63,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow
     hwnd = CreateWindowEx(
         0,                                  // Optional window styles.
         CLASS_NAME,                         // Window class
-        L"Auto PDFGetX",    // Window text
+        L"Auto PDFGetX",					// Window text
         WS_OVERLAPPEDWINDOW,                // Window style
 
         // Size and position
@@ -89,9 +81,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow
     }
 
     ShowWindow(hwnd, nCmdShow);
-    SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 500, 160, SWP_NOREDRAW | SWP_SHOWWINDOW);
-
-	MouseHook = SetWindowsHookEx(WH_MOUSE_LL,MouseHookProc,hInstance,0);
+    SetWindowPos(hwnd, HWND_TOPMOST, 0, 500, 500, 160, SWP_NOREDRAW | SWP_SHOWWINDOW);
 
     // Run the message loop.
 
@@ -112,29 +102,23 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
     {
 	case WM_CREATE:
 		{
-					  
 			aStealer = Stealer();
+			log("                                                                \r\n _____     _          _____ ____  _____ _____     _   __ __     \r\n|  _  |_ _| |_ ___   |  _  |    \\|   __|   __|___| |_|  |  |    \r\n|     | | |  _| . |  |   __|  |  |   __|  |  | -_|  _|-   -|    \r\n|__|__|___|_| |___|  |__|  |____/|__|  |_____|___|_| |__|__|    \r\n                                                                \r\n                                                                \r\n ___     ___      _                  _                          \r\n|_  |   |   |    | |_ _ _    ___ ___| |_ _ _ ___ ___            \r\n _| |_ _| | |    | . | | |  | .'| .'|   | | |   | . |           \r\n|_____|_|___|    |___|_  |  |__,|__,|_|_|___|_|_|_  |           \r\n                     |___|                      |___|           ");
 			log(">>>Before everything, config PDFGetX2 appreporately and press \"reset data\" button firse<<<");
 			log("Then, input folder path (starts with \"C:\\\") where .chi files located");
+			log("find prefixs for both sample and bg files.");
 			log("---tip: the folder can have subfolder, and don't worry about other files.");
 			log("Press \"Generate file list\" button, and then \"Load file list\"");
 			log("----------------------------\r\nWelcome to use \"Auto PDFGetX\", ");
-			log("If you finished the steps metioned before,");
-			log("Please open the PDFGetX window and right click on the following:");
-			log("Sample: button,  \r\n Background button, \r\nReset Data button, \r\nGet I(Q) button, \r\nCalc Correction button, \r\nGet S(Q) button, \r\nGet G(Q) button. \r\n");
-			log("After that, start!");
 
 			hPDFGetXWnd = FindWindow(NULL, L"PDFgetX2 v1.0 build 20050312");
 			if (!hPDFGetXWnd)
 			{
 				MessageBox(hwnd, L"Cannot find PDFGetX program, please open it first.", L"Warning", MB_OK);
-				//PostQuitMessage(0);  3442 2752 lijing Àî½õ
-				//return 0;
 			}
 			else {
 				if (aStealer.stealHandleAutomatically(hPDFGetXWnd)) {
 					controlsControled = true;
-					UnhookWindowsHookEx(MouseHook);
 				}
 			}
 			HGDIOBJ hfDefault=GetStockObject(DEFAULT_GUI_FONT);
@@ -163,7 +147,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 				WS_TABSTOP | WS_VISIBLE |
 				WS_CHILD | BS_DEFPUSHBUTTON,
 				314,
-				30,
+				40,
 				100,
 				24,
 				hwnd,
@@ -202,7 +186,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 				WS_CHILD|WS_VISIBLE|
 				ES_MULTILINE|ES_AUTOVSCROLL,
 				80,
-				30,
+				40,
 				230,
 				24,
 				hwnd,
@@ -216,8 +200,51 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			SendMessage(hEdit,
 				WM_SETTEXT,
 				NULL,
-				(LPARAM)TEXT("C:\\")
+				(LPARAM)TEXT("D:")
 			);
+			// create prefix edit boxs
+			hSamplePrefixEdit = CreateWindowEx(WS_EX_CLIENTEDGE,
+				TEXT("EDIT"), TEXT(""), 
+				WS_CHILD | WS_VISIBLE |
+				ES_MULTILINE | ES_AUTOVSCROLL,
+				40,
+				5,
+				140,
+				24,
+				hwnd,
+				(HMENU)IDC_SAMPLE_PREFIX_EDIT,
+				GetModuleHandle(NULL),
+				NULL);
+			SendMessage(hSamplePrefixEdit,
+				WM_SETFONT,
+				(WPARAM)hfDefault,
+				MAKELPARAM(FALSE, 0));
+			SendMessage(hSamplePrefixEdit,
+				WM_SETTEXT,
+				NULL,
+				(LPARAM)TEXT("Silan_sample01_withflux_PDFrun01cool-")//Sample-File-Prefix")
+				);
+			hBgPrefixEdit = CreateWindowEx(WS_EX_CLIENTEDGE,
+				TEXT("EDIT"), TEXT(""),
+				WS_CHILD | WS_VISIBLE |
+				ES_MULTILINE | ES_AUTOVSCROLL,
+				200,
+				5,
+				140,
+				24,
+				hwnd,
+				(HMENU)IDC_BG_PREFIX_EDIT,
+				GetModuleHandle(NULL),
+				NULL);
+			SendMessage(hBgPrefixEdit,
+				WM_SETFONT,
+				(WPARAM)hfDefault,
+				MAKELPARAM(FALSE, 0));
+			SendMessage(hBgPrefixEdit,
+				WM_SETTEXT,
+				NULL,
+				(LPARAM)TEXT("Silan_holder_PDF_350mm_cool-")//Background-File-Prefix")
+				);
 		}
 		return 0;
 	case WM_COMMAND:
@@ -235,7 +262,9 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 						int count = 0;
 						while (1)
 						{
-							std::string file_path = aFolder.getNextFilePath(!fail);
+							file aFile = aFolder.getNextFile(!fail);
+							std::string file_path = aFile.file_path;
+							std::string bg_file_path = aFile.bg_file_path;
 							if (file_path == "") break;
 							fail = !(aRobber.process(file_path));
 							if (!fail)
@@ -248,7 +277,6 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 								file_path += " failed";
 							}
 							log(string2char(file_path));
-							std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
 						}
 						std::string _log = "Processed ";
 						_log += to_string(count);
@@ -262,30 +290,33 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 				}
 				return 0;
 				case IDC_GENERATE_FILE_LIST_BUTTON:
-					char szBuf[20480];
+					char szBuf[20480], samplePrefix[20480], bgPrefix[20480];
 					LONG lResult;
 					lResult = SendMessageA( hEdit, WM_GETTEXT, sizeof( szBuf ) / sizeof( szBuf[0] ), (LPARAM)szBuf );
-
+					lResult = SendMessageA(hSamplePrefixEdit, WM_GETTEXT, sizeof(samplePrefix) / sizeof(samplePrefix[0]), (LPARAM)samplePrefix);
+					lResult = SendMessageA(hBgPrefixEdit, WM_GETTEXT, sizeof(bgPrefix) / sizeof(bgPrefix[0]), (LPARAM)bgPrefix);
+					
 					aFolder = Folder();
+					aFolder.setPrefix(samplePrefix, bgPrefix);
 					aFolder.selectFolder(szBuf);
 					break;
 				case IDC_LOAD_FILE_LIST_BUTTON:
-					int fileNum = aFolder.loadFileList();
-					if (fileNum == -1)
+					numberOfFiles fileNum = aFolder.loadFileList();
+					if (fileNum.bg == -1 && fileNum.sample == -1)
 					{
 						::MessageBox(hwnd, L"No file list fount", L"Error", MB_OK);
 					} else 
 					{
-						std::string _log = "Loaded "; 
-						_log += to_string(fileNum); 
-						_log += " files.";
+						std::string _log = "Loaded sample file "; 
+						_log += to_string(fileNum.sample); 
+						_log += " and background file ";
+						_log += to_string(fileNum.bg);
 						::MessageBox(hwnd, string2ws(_log).c_str(), L"Error", MB_OK);
 					}
 					break;
 			}
 			return 0;
     case WM_DESTROY:
-		UnhookWindowsHookEx(MouseHook);
         PostQuitMessage(0);
         return 0;
 

@@ -6,31 +6,40 @@
 #include <sstream>
 #include "windows.h"  
 #include <string.h>  
-#include <Strsafe.h>  
-
+#include <Strsafe.h>
 #include <vector>
+#include <map>
+#include <queue> 
+#include "Utility.h"
 
 using namespace std;
 using namespace console_log;
 
+struct file {
+	std::string file_path;
+	std::string bg_file_path;
+	int status;
+};
+struct numberOfFiles {
+	int sample;
+	int bg;
+};
 class Folder
 {
 public:
 	Folder();
 	~Folder();
 	bool selectFolder(char *);
-	int loadFileList();
-	std::string getNextFilePath(bool);
+	numberOfFiles loadFileList();
+	file getNextFile(bool);
+	void setPrefix(char *, char *);
 
 private:
-	char * file_list;
+	char * file_list, * bg_file_list, * samplePrefix, * bgPrefix;
 	void TraverseDirectory(wchar_t Dir[MAX_PATH]);
-	struct file {
-		std::string file_path;
-		int status;
-	};
-	std::vector< file > fileFolder;
-	int index;
+	std::map<std::string, file> fileFolders;
+	std::queue<std::string> fileIdentities;
+	bool firstFile;
 };
 
 Folder::Folder()
@@ -38,13 +47,19 @@ Folder::Folder()
 	file_list = "file_list.txt";
 	locale loc("chs");                // chinese support
 	wcout.imbue(loc);
-
+	firstFile = true;
 	ofstream tmp(file_list); //create a file
-	fileFolder = std::vector< file >(0);
 }
 
 Folder::~Folder()
 {
+}
+
+void Folder::setPrefix(char * _samplePrefix, char * _bgPrefix) {
+	samplePrefix = _samplePrefix;
+	bgPrefix = _bgPrefix;
+	cout << "Sample file prefix: " << samplePrefix << std::endl;
+	cout << "Background file prefix: " << bgPrefix << std::endl;
 }
 
 bool Folder::selectFolder(char * dir)
@@ -93,9 +108,32 @@ void Folder::TraverseDirectory(wchar_t Dir[MAX_PATH])
 				if (path.find(".chi") != std::string::npos)
 				{
 					std::wofstream fl; 
+					locale loc("chs");                // chinese support
+					fl.imbue(loc);
 					fl.open(file_list, std::ios_base::app | std::ios_base::out);
-					wcout << Dir << "\\" << FindFileData.cFileName << " found." << endl;
-					fl << Dir << "\\" << FindFileData.cFileName << endl;
+					if (path.find(samplePrefix) != std::string::npos) {
+						std::vector<std::string> tokens = Utility::split_str(path, samplePrefix);
+						if (tokens.size() > 0) {
+							tokens = Utility::split_str(tokens[0], ".chi");
+							std::string identity = tokens[0];
+							wcout << "sample file of " << identity.c_str() << ": " << Dir << "\\" << FindFileData.cFileName << std::endl;
+							fl << "S " << identity.c_str() << " " << Dir << "\\" << FindFileData.cFileName; 
+							fl << std::endl;
+						}
+					}
+					else if (path.find(bgPrefix) != std::string::npos) {
+						std::vector<std::string> tokens = Utility::split_str(path, bgPrefix);
+						if (tokens.size() > 0) {
+							tokens = Utility::split_str(tokens[0], ".chi");
+							std::string identity = tokens[0];
+							wcout << "background file of " << identity.c_str() << ": " << Dir << "\\" << FindFileData.cFileName << std::endl;
+							fl << "B " << identity.c_str() << " " << Dir << "\\" << FindFileData.cFileName; 
+							fl << std::endl;
+						}
+					}
+					else {
+						continue;
+					}
 					fl.close();
 				}
 			}
@@ -104,56 +142,73 @@ void Folder::TraverseDirectory(wchar_t Dir[MAX_PATH])
 	}
 }
 
-int Folder::loadFileList()
+numberOfFiles Folder::loadFileList()
 {
-	fileFolder.clear();
+	numberOfFiles num = {0, 0};
+	//
+	fileFolders.clear();
 	std::ifstream fl("file_list.txt");
 	if (!fl.is_open()) {
-		return -1;
+		return{ -1, -1 };
 	}
-	std::string _file_path;
-	while (std::getline(fl, _file_path))
+	std::string file_info;
+	while (std::getline(fl, file_info))
 	{
+		std::stringstream ss(file_info);
+		char type;
+		std::string identity;
 		file aFile;
-		aFile.file_path = _file_path;
-		aFile.status = 0;
-		fileFolder.push_back(aFile);
+		ss >> type >> identity;
+		auto pos = fileFolders.find(identity);
+		if (pos == fileFolders.end()) {
+			// create if no such identity
+			aFile.status = 0;
+			fileFolders[identity] = aFile;
+		}
+		if (type == 'S') {
+			ss >> fileFolders[identity].file_path;
+			num.sample++;
+		}
+		else if (type == 'B') {
+			ss >> fileFolders[identity].bg_file_path;
+			num.bg++;
+		}
 	}
-	index = 0;
-	return fileFolder.size();
+	firstFile = true;
+	// move all keys to identities
+	for (auto i = fileFolders.begin(); i != fileFolders.end(); i++) {
+		fileIdentities.push((*i).first);
+	}
+	return num;
 }
 
-std::string Folder::getNextFilePath(bool last_success)
+file Folder::getNextFile(bool last_success)
 {
-	if (index > 0)
-	{
-		if (!last_success)
-		{
-			if (++ fileFolder[index - 1].status > 5)
-			{
-				fileFolder[index - 1].status = -1;
-				std::string _log = fileFolder[index - 1].file_path;
+	if (fileIdentities.size() <= 0) {
+		return{"", "", NULL};
+	}
+	if (!firstFile) {
+		if (!last_success) {
+			if (++ fileFolders[fileIdentities.front()].status > 5) {
+				fileFolders[fileIdentities.front()].status = -1;
+				std::string _log = fileFolders[fileIdentities.front()].file_path;
 				_log += " failed to be processed for 5 tries, passed.";
 				log(string2char(_log));
-			} else 
-			{
-				fileFolder.push_back(fileFolder[index - 1]);
-				fileFolder.erase(fileFolder.begin() + index - 1);
-				index --;
+			}
+			else {
+				fileIdentities.push(fileIdentities.front());
+				fileIdentities.pop();
 			}
 		}
-		else 
-		{
-			std::string _log = fileFolder[index - 1].file_path;
+		else {
+			std::string _log = fileFolders[fileIdentities.front()].file_path;
 			_log += " successfully processed in ";
-			_log += to_string( ++ fileFolder[index - 1].status);
+			_log += to_string(fileFolders[fileIdentities.front()].status);
 			_log += " try(tries).";
 			log(string2char(_log));
+			fileIdentities.pop();
 		}
 	}
-	if (index >= fileFolder.size())
-	{
-		return "";
-	}
-	return fileFolder[index ++].file_path;
+	firstFile = false;
+	return fileFolders[fileIdentities.front()];
 }

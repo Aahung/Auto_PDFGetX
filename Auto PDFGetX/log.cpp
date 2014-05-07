@@ -12,7 +12,7 @@ namespace console_log
 		AllocConsole();
 		// set the window to top
 		HWND hwnd = GetConsoleWindow();
-		SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 500, 500, SWP_NOREDRAW | SWP_SHOWWINDOW);
+		SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 600, 700, SWP_NOREDRAW | SWP_SHOWWINDOW);
 
 		HANDLE handle_out = GetStdHandle(STD_OUTPUT_HANDLE);
 		int hCrt = _open_osfhandle((long)handle_out, _O_TEXT);

@@ -29,6 +29,7 @@ Robber::~Robber()
 
 bool Robber::process(std::string file_path)
 {
+	std::cout << std::endl << std::endl << std::endl << std::endl;
 	SendMessage(hSampleBtn, BM_CLICK, 0, 0);
 	HWND a;
 	do {
@@ -42,6 +43,16 @@ bool Robber::process(std::string file_path)
 		do {
 			Sleep(100);
 			hOpenBtn = ::FindWindowEx(a, NULL, L"Button", L"&Open");
+			while (hOpenBtn == NULL) {
+				Sleep(50);
+				log("Fail to get \"Open\" button, try again.");
+				hOpenBtn = ::FindWindowEx(a, NULL, NULL, NULL);
+				hOpenBtn = ::FindWindowEx(a, hOpenBtn, NULL, NULL);
+				hOpenBtn = ::FindWindowEx(a, hOpenBtn, NULL, NULL);
+				hOpenBtn = ::FindWindowEx(a, hOpenBtn, NULL, NULL);
+				hOpenBtn = ::FindWindowEx(a, hOpenBtn, NULL, NULL);
+				hOpenBtn = ::FindWindowEx(a, hOpenBtn, NULL, NULL);
+			}
 			hFilePathEdit = ::FindWindowEx(a, NULL, L"ComboBoxEx32", NULL);
 			hFilePathEdit = ::FindWindowEx(hFilePathEdit, NULL, L"ComboBox", NULL);
 			hFilePathEdit = ::FindWindowEx(hFilePathEdit, NULL, L"Edit", NULL);
@@ -80,6 +91,9 @@ bool Robber::process(std::string file_path)
 		} while (1);
 
 		::SendMessage(hOpenBtn, BM_CLICK, 0, 0);
+		// debug
+		if (hOpenBtn == NULL) log("Open button not got.");
+		// end debug
 		Sleep(200);
 		log("Selected file.");
 	} while (::FindWindow(NULL, L"Please select sample data file -->") != NULL);
