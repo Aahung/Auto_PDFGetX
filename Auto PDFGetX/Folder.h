@@ -157,12 +157,15 @@ numberOfFiles Folder::loadFileList()
 		std::stringstream ss(file_info);
 		char type;
 		std::string identity;
-		file aFile;
+		file aFile = {
+			"",
+			"",
+			0
+		};
 		ss >> type >> identity;
 		auto pos = fileFolders.find(identity);
 		if (pos == fileFolders.end()) {
 			// create if no such identity
-			aFile.status = 0;
 			fileFolders[identity] = aFile;
 		}
 		if (type == 'S') {
@@ -175,9 +178,21 @@ numberOfFiles Folder::loadFileList()
 		}
 	}
 	firstFile = true;
-	// move all keys to identities
+	// check whether sample and bg are equal
+	if (num.bg != num.sample) {
+		log("warning!!! sample file number and background file number not equal!!! \r\n following files have problems: ");
+	}
+	// move all keys to identities and print troublesome files
 	for (auto i = fileFolders.begin(); i != fileFolders.end(); i++) {
-		fileIdentities.push((*i).first);
+		if ((*i).second.file_path == "") {
+			log(string2char((*i).first + " has no samle file, will be ignored."));
+		}
+		else if ((*i).second.bg_file_path == "") {
+			log(string2char((*i).first + " has no background file, will be ignored."));
+		}
+		else {
+			fileIdentities.push((*i).first);
+		}
 	}
 	return num;
 }

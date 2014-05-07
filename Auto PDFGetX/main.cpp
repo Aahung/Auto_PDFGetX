@@ -115,6 +115,8 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			if (!hPDFGetXWnd)
 			{
 				MessageBox(hwnd, L"Cannot find PDFGetX program, please open it first.", L"Warning", MB_OK);
+				PostQuitMessage(0);
+				return 0;
 			}
 			else {
 				if (aStealer.stealHandleAutomatically(hPDFGetXWnd)) {
