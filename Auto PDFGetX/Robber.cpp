@@ -61,7 +61,7 @@ bool Robber::process(std::string file_path, std::string bg_file_path)
 			hFilePathEdit = ::FindWindowEx(a, NULL, L"ComboBoxEx32", NULL);
 			hFilePathEdit = ::FindWindowEx(hFilePathEdit, NULL, L"ComboBox", NULL);
 			hFilePathEdit = ::FindWindowEx(hFilePathEdit, NULL, L"Edit", NULL);
-			if (++count > 500)
+			if (++count > 5)
 			{
 				HWND hCancelBtn = ::FindWindowEx(a, NULL, L"Button", L"Cancel");
 				SendMessage(hCancelBtn, BM_CLICK, 0, 0);
@@ -133,7 +133,7 @@ bool Robber::process(std::string file_path, std::string bg_file_path)
 			hFilePathEdit = ::FindWindowEx(a, NULL, L"ComboBoxEx32", NULL);
 			hFilePathEdit = ::FindWindowEx(hFilePathEdit, NULL, L"ComboBox", NULL);
 			hFilePathEdit = ::FindWindowEx(hFilePathEdit, NULL, L"Edit", NULL);
-			if (++count > 500)
+			if (++count > 5)
 			{
 				HWND hCancelBtn = ::FindWindowEx(a, NULL, L"Button", L"Cancel");
 				SendMessage(hCancelBtn, BM_CLICK, 0, 0);

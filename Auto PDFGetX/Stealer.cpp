@@ -111,6 +111,8 @@ bool Stealer::allHandleStolen()
 	return ready;
 }
 
+
+// getters
 HWND Stealer::getSampleBtnHandle()
 {
 	return hSampleBtn;

@@ -1,4 +1,4 @@
-07.05.2014 21:22:06:                                                                 
+08.05.2014 00:57:34:                                                                 
  _____     _          _____ ____  _____ _____     _   __ __     
 |  _  |_ _| |_ ___   |  _  |    \|   __|   __|___| |_|  |  |    
 |     | | |  _| . |  |   __|  |  |   __|  |  | -_|  _|-   -|    
@@ -10,21 +10,21 @@
  _| |_ _| | |    | . | | |  | .'| .'|   | | |   | . |           
 |_____|_|___|    |___|_  |  |__,|__,|_|_|___|_|_|_  |           
                      |___|                      |___|           
-07.05.2014 21:22:06: >>>Before everything, config PDFGetX2 appreporately and press "reset data" button firse<<<
-07.05.2014 21:22:06: Then, input folder path (starts with "C:\") where .chi files located
-07.05.2014 21:22:06: find prefixs for both sample and bg files.
-07.05.2014 21:22:06: ---tip: the folder can have subfolder, and don't worry about other files.
-07.05.2014 21:22:06: Press "Generate file list" button, and then "Load file list"
-07.05.2014 21:22:06: ----------------------------
+08.05.2014 00:57:34: >>>Before everything, config PDFGetX2 appreporately and press "reset data" button firse<<<
+08.05.2014 00:57:34: Then, input folder path (starts with "C:\") where .chi files located
+08.05.2014 00:57:34: find prefixs for both sample and bg files.
+08.05.2014 00:57:34: ---tip: the folder can have subfolder, and don't worry about other files.
+08.05.2014 00:57:34: Press "Generate file list" button, and then "Load file list"
+08.05.2014 00:57:34: ----------------------------
 Welcome to use "Auto PDFGetX", 
-07.05.2014 21:22:06: trying to get steal the button automatically...
-07.05.2014 21:22:06: Sample button got.
-07.05.2014 21:22:06: Sample Background button got.
-07.05.2014 21:22:06: Reset button got.
-07.05.2014 21:22:06: Get I button got.
-07.05.2014 21:22:06: Calc Correction button got.
-07.05.2014 21:22:06: Get S button got.
-07.05.2014 21:22:06: Get G button got.
-07.05.2014 21:22:06: Status Box spied.
-07.05.2014 21:22:06: All the objects under controlled.
-07.05.2014 21:22:06: :-)
+08.05.2014 00:57:34: trying to get steal the button automatically...
+08.05.2014 00:57:34: Sample button got.
+08.05.2014 00:57:34: Sample Background button got.
+08.05.2014 00:57:34: Reset button got.
+08.05.2014 00:57:34: Get I button got.
+08.05.2014 00:57:34: Calc Correction button got.
+08.05.2014 00:57:34: Get S button got.
+08.05.2014 00:57:34: Get G button got.
+08.05.2014 00:57:34: Status Box spied.
+08.05.2014 00:57:34: All the objects under controlled.
+08.05.2014 00:57:34: :-)

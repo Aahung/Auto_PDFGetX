@@ -19,6 +19,8 @@
 #include <fstream>
 #include <sstream>
 
+#include "IsoSetting.h"
+
 
 using namespace console_log;
 
@@ -199,10 +201,10 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 				WM_SETFONT,
 				(WPARAM)hfDefault,
 				MAKELPARAM(FALSE,0));
-			SendMessage(hEdit,
+			SendMessageA(hEdit,
 				WM_SETTEXT,
 				NULL,
-				(LPARAM)TEXT("D:")
+				(LPARAM)(IsoSetting::get("default-directory"))
 			);
 			// create prefix edit boxs
 			hSamplePrefixEdit = CreateWindowEx(WS_EX_CLIENTEDGE,
@@ -221,10 +223,10 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 				WM_SETFONT,
 				(WPARAM)hfDefault,
 				MAKELPARAM(FALSE, 0));
-			SendMessage(hSamplePrefixEdit,
+			SendMessageA(hSamplePrefixEdit,
 				WM_SETTEXT,
 				NULL,
-				(LPARAM)TEXT("Silan_sample01_withflux_PDFrun01cool-")//Sample-File-Prefix")
+				(LPARAM)(IsoSetting::get("sample-prefix"))//Sample-File-Prefix")
 				);
 			hBgPrefixEdit = CreateWindowEx(WS_EX_CLIENTEDGE,
 				TEXT("EDIT"), TEXT(""),
@@ -242,10 +244,10 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 				WM_SETFONT,
 				(WPARAM)hfDefault,
 				MAKELPARAM(FALSE, 0));
-			SendMessage(hBgPrefixEdit,
+			SendMessageA(hBgPrefixEdit,
 				WM_SETTEXT,
 				NULL,
-				(LPARAM)TEXT("Silan_holder_PDF_350mm_cool-")//Background-File-Prefix")
+				(LPARAM)(IsoSetting::get("background-prefix"))//Background-File-Prefix")
 				);
 		}
 		return 0;
