@@ -115,6 +115,10 @@ HWND Stealer::getSampleBtnHandle()
 {
 	return hSampleBtn;
 }
+HWND Stealer::getSampleBackgroundBtnHandle()
+{
+	return hSampleBackgroundBtn;
+}
 HWND Stealer::getResetBtnHandle()
 {
 	return hResetBtn;

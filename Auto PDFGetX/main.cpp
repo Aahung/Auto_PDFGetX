@@ -81,7 +81,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow
     }
 
     ShowWindow(hwnd, nCmdShow);
-    SetWindowPos(hwnd, HWND_TOPMOST, 0, 500, 500, 160, SWP_NOREDRAW | SWP_SHOWWINDOW);
+    //SetWindowPos(hwnd, HWND_TOPMOST, 0, 500, 500, 160, SWP_NOREDRAW | SWP_SHOWWINDOW);
 
     // Run the message loop.
 
@@ -254,7 +254,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 				{
 					if (aStealer.allHandleStolen())
 					{
-						Robber aRobber = Robber(aStealer.getSampleBtnHandle(), aStealer.getResetBtnHandle(), aStealer.getGetIBtnHandle(), 
+						Robber aRobber = Robber(aStealer.getSampleBtnHandle(), aStealer.getSampleBackgroundBtnHandle(), aStealer.getResetBtnHandle(), aStealer.getGetIBtnHandle(),
 							aStealer.getCalCBtnHandle(), aStealer.getGetSBtnHandle(), aStealer.getGetGBtnHandle(), 
 							aStealer.getStatusTextHandle());
 						
@@ -266,7 +266,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 							std::string file_path = aFile.file_path;
 							std::string bg_file_path = aFile.bg_file_path;
 							if (file_path == "") break;
-							fail = !(aRobber.process(file_path));
+							fail = !(aRobber.process(file_path, bg_file_path));
 							if (!fail)
 							{
 								std::cout << " finished" << std::endl;

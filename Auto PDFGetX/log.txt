@@ -1,4 +1,4 @@
-07.05.2014 20:39:19:                                                                 
+07.05.2014 20:56:31:                                                                 
  _____     _          _____ ____  _____ _____     _   __ __     
 |  _  |_ _| |_ ___   |  _  |    \|   __|   __|___| |_|  |  |    
 |     | | |  _| . |  |   __|  |  |   __|  |  | -_|  _|-   -|    
@@ -10,21 +10,261 @@
  _| |_ _| | |    | . | | |  | .'| .'|   | | |   | . |           
 |_____|_|___|    |___|_  |  |__,|__,|_|_|___|_|_|_  |           
                      |___|                      |___|           
-07.05.2014 20:39:19: >>>Before everything, config PDFGetX2 appreporately and press "reset data" button firse<<<
-07.05.2014 20:39:19: Then, input folder path (starts with "C:\") where .chi files located
-07.05.2014 20:39:19: find prefixs for both sample and bg files.
-07.05.2014 20:39:19: ---tip: the folder can have subfolder, and don't worry about other files.
-07.05.2014 20:39:19: Press "Generate file list" button, and then "Load file list"
-07.05.2014 20:39:19: ----------------------------
+07.05.2014 20:56:31: >>>Before everything, config PDFGetX2 appreporately and press "reset data" button firse<<<
+07.05.2014 20:56:31: Then, input folder path (starts with "C:\") where .chi files located
+07.05.2014 20:56:31: find prefixs for both sample and bg files.
+07.05.2014 20:56:31: ---tip: the folder can have subfolder, and don't worry about other files.
+07.05.2014 20:56:31: Press "Generate file list" button, and then "Load file list"
+07.05.2014 20:56:31: ----------------------------
 Welcome to use "Auto PDFGetX", 
-07.05.2014 20:39:19: trying to get steal the button automatically...
-07.05.2014 20:39:19: Sample button got.
-07.05.2014 20:39:19: Sample Background button got.
-07.05.2014 20:39:19: Reset button got.
-07.05.2014 20:39:19: Get I button got.
-07.05.2014 20:39:19: Calc Correction button got.
-07.05.2014 20:39:19: Get S button got.
-07.05.2014 20:39:19: Get G button got.
-07.05.2014 20:39:19: Status Box spied.
-07.05.2014 20:39:19: All the objects under controlled.
-07.05.2014 20:39:19: :-)
+07.05.2014 20:56:31: trying to get steal the button automatically...
+07.05.2014 20:56:31: Sample button got.
+07.05.2014 20:56:31: Sample Background button got.
+07.05.2014 20:56:31: Reset button got.
+07.05.2014 20:56:31: Get I button got.
+07.05.2014 20:56:31: Calc Correction button got.
+07.05.2014 20:56:31: Get S button got.
+07.05.2014 20:56:31: Get G button got.
+07.05.2014 20:56:31: Status Box spied.
+07.05.2014 20:56:31: All the objects under controlled.
+07.05.2014 20:56:31: :-)
+07.05.2014 20:56:37: loading sample file
+07.05.2014 20:56:38: File path box Found.
+07.05.2014 20:56:38: Trying to fill file path into box.
+07.05.2014 20:56:38: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00001.chi
+07.05.2014 20:56:38: Checked file path successfully filled.
+07.05.2014 20:56:38: Selected file.
+07.05.2014 20:56:38: loading bg file
+07.05.2014 20:56:39: Background file path box Found.
+07.05.2014 20:56:39: Trying to fill bg file path into box.
+07.05.2014 20:56:39: D:\getpdf_data\BG\Silan_holder_PDF_350mm_cool-00001.chi
+07.05.2014 20:56:39: Checked bg file path successfully filled.
+07.05.2014 20:56:39: Selected file.
+07.05.2014 20:56:39: Trying to reset data...
+07.05.2014 20:56:39: Data reset.
+07.05.2014 20:56:39: Trying to get I(q)...
+07.05.2014 20:56:39: I(q) got.
+07.05.2014 20:56:39: Trying to correct calculation...
+07.05.2014 20:56:41: Calculation corrected.
+07.05.2014 20:56:41: Trying to get S(q)...
+07.05.2014 20:56:42: S(q) got.
+07.05.2014 20:56:42: Trying to get G(r)...
+07.05.2014 20:56:46: G(r) got.
+07.05.2014 20:56:46: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00001.chi finished
+07.05.2014 20:56:46: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00001.chi successfully processed in 0 try(tries).
+07.05.2014 20:56:46: loading sample file
+07.05.2014 20:56:46: File path box Found.
+07.05.2014 20:56:46: Trying to fill file path into box.
+07.05.2014 20:56:46: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00002.chi
+07.05.2014 20:56:46: Checked file path successfully filled.
+07.05.2014 20:56:47: Selected file.
+07.05.2014 20:56:47: loading bg file
+07.05.2014 20:56:47: Background file path box Found.
+07.05.2014 20:56:47: Trying to fill bg file path into box.
+07.05.2014 20:56:47: D:\getpdf_data\BG\Silan_holder_PDF_350mm_cool-00002.chi
+07.05.2014 20:56:47: Checked bg file path successfully filled.
+07.05.2014 20:56:48: Selected file.
+07.05.2014 20:56:48: Trying to reset data...
+07.05.2014 20:56:48: Data reset.
+07.05.2014 20:56:48: Trying to get I(q)...
+07.05.2014 20:56:48: I(q) got.
+07.05.2014 20:56:48: Trying to correct calculation...
+07.05.2014 20:56:50: Calculation corrected.
+07.05.2014 20:56:50: Trying to get S(q)...
+07.05.2014 20:56:50: S(q) got.
+07.05.2014 20:56:50: Trying to get G(r)...
+07.05.2014 20:56:54: G(r) got.
+07.05.2014 20:56:54: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00002.chi finished
+07.05.2014 20:56:54: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00002.chi successfully processed in 0 try(tries).
+07.05.2014 20:56:54: loading sample file
+07.05.2014 20:56:55: File path box Found.
+07.05.2014 20:56:55: Trying to fill file path into box.
+07.05.2014 20:56:55: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00003.chi
+07.05.2014 20:56:55: Checked file path successfully filled.
+07.05.2014 20:56:55: Selected file.
+07.05.2014 20:56:55: loading bg file
+07.05.2014 20:56:56: Background file path box Found.
+07.05.2014 20:56:56: Trying to fill bg file path into box.
+07.05.2014 20:56:56: D:\getpdf_data\BG\Silan_holder_PDF_350mm_cool-00003.chi
+07.05.2014 20:56:56: Checked bg file path successfully filled.
+07.05.2014 20:56:56: Selected file.
+07.05.2014 20:56:56: Trying to reset data...
+07.05.2014 20:56:56: Data reset.
+07.05.2014 20:56:56: Trying to get I(q)...
+07.05.2014 20:56:56: I(q) got.
+07.05.2014 20:56:56: Trying to correct calculation...
+07.05.2014 20:56:58: Calculation corrected.
+07.05.2014 20:56:58: Trying to get S(q)...
+07.05.2014 20:56:59: S(q) got.
+07.05.2014 20:56:59: Trying to get G(r)...
+07.05.2014 20:57:03: G(r) got.
+07.05.2014 20:57:03: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00003.chi finished
+07.05.2014 20:57:03: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00003.chi successfully processed in 0 try(tries).
+07.05.2014 20:57:03: loading sample file
+07.05.2014 20:57:03: File path box Found.
+07.05.2014 20:57:03: Trying to fill file path into box.
+07.05.2014 20:57:03: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00004.chi
+07.05.2014 20:57:03: Checked file path successfully filled.
+07.05.2014 20:57:04: Selected file.
+07.05.2014 20:57:04: loading bg file
+07.05.2014 20:57:04: Background file path box Found.
+07.05.2014 20:57:04: Trying to fill bg file path into box.
+07.05.2014 20:57:04: D:\getpdf_data\BG\Silan_holder_PDF_350mm_cool-00004.chi
+07.05.2014 20:57:04: Checked bg file path successfully filled.
+07.05.2014 20:57:05: Selected file.
+07.05.2014 20:57:05: Trying to reset data...
+07.05.2014 20:57:05: Data reset.
+07.05.2014 20:57:05: Trying to get I(q)...
+07.05.2014 20:57:05: I(q) got.
+07.05.2014 20:57:05: Trying to correct calculation...
+07.05.2014 20:57:07: Calculation corrected.
+07.05.2014 20:57:07: Trying to get S(q)...
+07.05.2014 20:57:07: S(q) got.
+07.05.2014 20:57:07: Trying to get G(r)...
+07.05.2014 20:57:11: G(r) got.
+07.05.2014 20:57:11: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00004.chi finished
+07.05.2014 20:57:11: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00004.chi successfully processed in 0 try(tries).
+07.05.2014 20:57:11: loading sample file
+07.05.2014 20:57:12: File path box Found.
+07.05.2014 20:57:12: Trying to fill file path into box.
+07.05.2014 20:57:12: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00005.chi
+07.05.2014 20:57:12: Checked file path successfully filled.
+07.05.2014 20:57:12: Selected file.
+07.05.2014 20:57:12: loading bg file
+07.05.2014 20:57:13: Background file path box Found.
+07.05.2014 20:57:13: Trying to fill bg file path into box.
+07.05.2014 20:57:13: D:\getpdf_data\BG\Silan_holder_PDF_350mm_cool-00005.chi
+07.05.2014 20:57:13: Checked bg file path successfully filled.
+07.05.2014 20:57:13: Selected file.
+07.05.2014 20:57:13: Trying to reset data...
+07.05.2014 20:57:13: Data reset.
+07.05.2014 20:57:13: Trying to get I(q)...
+07.05.2014 20:57:13: I(q) got.
+07.05.2014 20:57:13: Trying to correct calculation...
+07.05.2014 20:57:15: Calculation corrected.
+07.05.2014 20:57:15: Trying to get S(q)...
+07.05.2014 20:57:16: S(q) got.
+07.05.2014 20:57:16: Trying to get G(r)...
+07.05.2014 20:57:20: G(r) got.
+07.05.2014 20:57:20: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00005.chi finished
+07.05.2014 20:57:20: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00005.chi successfully processed in 0 try(tries).
+07.05.2014 20:57:20: loading sample file
+07.05.2014 20:57:20: File path box Found.
+07.05.2014 20:57:20: Trying to fill file path into box.
+07.05.2014 20:57:21: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00006.chi
+07.05.2014 20:57:21: Checked file path successfully filled.
+07.05.2014 20:57:21: Selected file.
+07.05.2014 20:57:21: loading bg file
+07.05.2014 20:57:21: Background file path box Found.
+07.05.2014 20:57:21: Trying to fill bg file path into box.
+07.05.2014 20:57:22: D:\getpdf_data\BG\Silan_holder_PDF_350mm_cool-00006.chi
+07.05.2014 20:57:22: Checked bg file path successfully filled.
+07.05.2014 20:57:22: Selected file.
+07.05.2014 20:57:22: Trying to reset data...
+07.05.2014 20:57:22: Data reset.
+07.05.2014 20:57:22: Trying to get I(q)...
+07.05.2014 20:57:22: I(q) got.
+07.05.2014 20:57:22: Trying to correct calculation...
+07.05.2014 20:57:24: Calculation corrected.
+07.05.2014 20:57:24: Trying to get S(q)...
+07.05.2014 20:57:24: S(q) got.
+07.05.2014 20:57:24: Trying to get G(r)...
+07.05.2014 20:57:29: G(r) got.
+07.05.2014 20:57:29: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00006.chi finished
+07.05.2014 20:57:29: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00006.chi successfully processed in 0 try(tries).
+07.05.2014 20:57:29: loading sample file
+07.05.2014 20:57:29: File path box Found.
+07.05.2014 20:57:29: Trying to fill file path into box.
+07.05.2014 20:57:29: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00007.chi
+07.05.2014 20:57:29: Checked file path successfully filled.
+07.05.2014 20:57:30: Selected file.
+07.05.2014 20:57:30: loading bg file
+07.05.2014 20:57:30: Background file path box Found.
+07.05.2014 20:57:30: Trying to fill bg file path into box.
+07.05.2014 20:57:30: D:\getpdf_data\BG\Silan_holder_PDF_350mm_cool-00007.chi
+07.05.2014 20:57:30: Checked bg file path successfully filled.
+07.05.2014 20:57:31: Selected file.
+07.05.2014 20:57:31: Trying to reset data...
+07.05.2014 20:57:31: Data reset.
+07.05.2014 20:57:31: Trying to get I(q)...
+07.05.2014 20:57:31: I(q) got.
+07.05.2014 20:57:31: Trying to correct calculation...
+07.05.2014 20:57:34: Calculation corrected.
+07.05.2014 20:57:34: Trying to get S(q)...
+07.05.2014 20:57:35: S(q) got.
+07.05.2014 20:57:36: Trying to get G(r)...
+07.05.2014 20:57:41: G(r) got.
+07.05.2014 20:57:41: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00007.chi finished
+07.05.2014 20:57:41: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00007.chi successfully processed in 0 try(tries).
+07.05.2014 20:57:41: loading sample file
+07.05.2014 20:57:41: File path box Found.
+07.05.2014 20:57:41: Trying to fill file path into box.
+07.05.2014 20:57:41: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00008.chi
+07.05.2014 20:57:41: Checked file path successfully filled.
+07.05.2014 20:57:42: Selected file.
+07.05.2014 20:57:42: loading bg file
+07.05.2014 20:57:42: Background file path box Found.
+07.05.2014 20:57:42: Trying to fill bg file path into box.
+07.05.2014 20:57:42: D:\getpdf_data\BG\Silan_holder_PDF_350mm_cool-00008.chi
+07.05.2014 20:57:42: Checked bg file path successfully filled.
+07.05.2014 20:57:43: Selected file.
+07.05.2014 20:57:43: Trying to reset data...
+07.05.2014 20:57:43: Data reset.
+07.05.2014 20:57:43: Trying to get I(q)...
+07.05.2014 20:57:43: I(q) got.
+07.05.2014 20:57:43: Trying to correct calculation...
+07.05.2014 20:57:44: Calculation corrected.
+07.05.2014 20:57:44: Trying to get S(q)...
+07.05.2014 20:57:45: S(q) got.
+07.05.2014 20:57:45: Trying to get G(r)...
+07.05.2014 20:57:50: G(r) got.
+07.05.2014 20:57:50: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00008.chi finished
+07.05.2014 20:57:50: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00008.chi successfully processed in 0 try(tries).
+07.05.2014 20:57:50: loading sample file
+07.05.2014 20:57:50: File path box Found.
+07.05.2014 20:57:50: Trying to fill file path into box.
+07.05.2014 20:57:50: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00009.chi
+07.05.2014 20:57:50: Checked file path successfully filled.
+07.05.2014 20:57:50: Selected file.
+07.05.2014 20:57:50: loading bg file
+07.05.2014 20:57:51: Background file path box Found.
+07.05.2014 20:57:51: Trying to fill bg file path into box.
+07.05.2014 20:57:51: D:\getpdf_data\BG\Silan_holder_PDF_350mm_cool-00009.chi
+07.05.2014 20:57:51: Checked bg file path successfully filled.
+07.05.2014 20:57:51: Selected file.
+07.05.2014 20:57:51: Trying to reset data...
+07.05.2014 20:57:51: Data reset.
+07.05.2014 20:57:51: Trying to get I(q)...
+07.05.2014 20:57:52: I(q) got.
+07.05.2014 20:57:52: Trying to correct calculation...
+07.05.2014 20:57:53: Calculation corrected.
+07.05.2014 20:57:53: Trying to get S(q)...
+07.05.2014 20:57:54: S(q) got.
+07.05.2014 20:57:54: Trying to get G(r)...
+07.05.2014 20:57:58: G(r) got.
+07.05.2014 20:57:58: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00009.chi finished
+07.05.2014 20:57:58: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00009.chi successfully processed in 0 try(tries).
+07.05.2014 20:57:58: loading sample file
+07.05.2014 20:57:59: File path box Found.
+07.05.2014 20:57:59: Trying to fill file path into box.
+07.05.2014 20:57:59: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00010.chi
+07.05.2014 20:57:59: Checked file path successfully filled.
+07.05.2014 20:57:59: Selected file.
+07.05.2014 20:57:59: loading bg file
+07.05.2014 20:58:00: Background file path box Found.
+07.05.2014 20:58:00: Trying to fill bg file path into box.
+07.05.2014 20:58:00: D:\getpdf_data\BG\Silan_holder_PDF_350mm_cool-00010.chi
+07.05.2014 20:58:00: Checked bg file path successfully filled.
+07.05.2014 20:58:00: Selected file.
+07.05.2014 20:58:00: Trying to reset data...
+07.05.2014 20:58:00: Data reset.
+07.05.2014 20:58:00: Trying to get I(q)...
+07.05.2014 20:58:01: I(q) got.
+07.05.2014 20:58:01: Trying to correct calculation...
+07.05.2014 20:58:02: Calculation corrected.
+07.05.2014 20:58:02: Trying to get S(q)...
+07.05.2014 20:58:03: S(q) got.
+07.05.2014 20:58:03: Trying to get G(r)...
+07.05.2014 20:58:13: G(r) got.
+07.05.2014 20:58:13: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00010.chi finished
+07.05.2014 20:58:13: D:\getpdf_data\sample\Silan_sample01_withflux_PDFrun01cool-00010.chi successfully processed in 0 try(tries).

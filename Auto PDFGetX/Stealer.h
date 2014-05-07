@@ -7,6 +7,7 @@ public:
 	void stealHandleByPoint(POINT &p);
 	bool allHandleStolen();
 	HWND getSampleBtnHandle();
+	HWND getSampleBackgroundBtnHandle();
 	HWND getResetBtnHandle();
 	HWND getGetIBtnHandle();
 	HWND getCalCBtnHandle();
