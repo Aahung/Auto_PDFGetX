@@ -10,7 +10,7 @@
 #include "Robber.h"
 using namespace console_log;
 
-Robber::Robber(HWND _hSampleBtn, HWND _hSampleBackgroundBtn, HWND _hResetBtn, HWND _hGetIBtn, HWND _hCalCBtn, HWND _hGetSBtn, HWND _hGetGBtn, HWND _hStatusText)
+Robber::Robber(HWND _hSampleBtn, HWND _hSampleBackgroundBtn, HWND _hResetBtn, HWND _hGetIBtn, HWND _hCalCBtn, HWND _hGetSBtn, HWND _hGetGBtn, HWND _hAdvancedBtn, HWND _hStatusText)
 {
 	hSampleBtn = _hSampleBtn;
 	hSampleBackgroundBtn = _hSampleBackgroundBtn;
@@ -19,6 +19,7 @@ Robber::Robber(HWND _hSampleBtn, HWND _hSampleBackgroundBtn, HWND _hResetBtn, HW
 	hCalCBtn = _hCalCBtn;
 	hGetSBtn = _hGetSBtn;
 	hGetGBtn = _hGetGBtn;
+	hAdvancedBtn = _hAdvancedBtn;
 	hStatusText = _hStatusText;
 }
 
@@ -182,6 +183,45 @@ bool Robber::process(std::string file_path, std::string bg_file_path)
 		{
 			return false;
 		}
+	}
+	// Optimize G(r) {
+	log("Trying to optimize G(r)...");
+	::PostMessage(hAdvancedBtn, BM_CLICK, 0, 0);
+	HWND hMenu = NULL;
+	HMENU menu = NULL;
+	log("Trying to get menu handle...");
+	Sleep(50);
+	hMenu = ::FindWindow(L"#32768", L"");
+	while (hMenu == NULL) {
+		log("Trying to get menu handle...");
+		Sleep(50);
+		hMenu = ::FindWindow(L"#32768", L"");
+	} 
+	::SendMessage(hMenu, BM_CLICK, 0, 0);
+	menu = (HMENU)::SendMessage(hMenu, MN_GETHMENU, 0, 0);
+	UINT firstBtn = GetMenuItemID(menu, 0);
+	TCHAR buf[64];
+	GetMenuString(menu, firstBtn, buf, 20, MF_BYCOMMAND);
+	if (buf[0] == 'O' && buf[1] == 'p') {
+		POINT p;
+		GetCursorPos(&p);
+		RECT Rect;
+		GetWindowRect(hMenu, &Rect);
+		int x = (Rect.left + Rect.right) / 2;
+		int y = Rect.top + 10;
+		SetCursorPos(x, y);
+		mouse_event(MOUSEEVENTF_LEFTDOWN, x, y, 0, 0);
+		mouse_event(MOUSEEVENTF_LEFTUP, x, y, 0, 0);
+		SetCursorPos(p.x, p.y);
+		log("Optimized G(r).");
+	}
+	else {
+		log("Fail to Optimized G(r).");
+	}
+	// }
+	if (!processStep(5))
+	{
+		return false;
 	}
 	return true;
 }

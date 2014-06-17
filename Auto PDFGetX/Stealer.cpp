@@ -20,6 +20,7 @@ Stealer::Stealer()
 	hCalCBtn = NULL;
 	hGetSBtn = NULL;
 	hGetGBtn = NULL; 
+	hAdvancedBtn = NULL;
 	hStatusText = NULL;
 }
 
@@ -83,6 +84,15 @@ bool Stealer::stealHandleAutomatically(HWND mainWindow) {
 		hGetGBtn = btn;
 		log("Get G button got.");
 	} else return false;
+	//move to next button
+	btn = ::FindWindowEx(subsubsubIDLWindow, btn, NULL, NULL);
+	btn = ::FindWindowEx(subsubsubIDLWindow, btn, NULL, NULL);
+	btn = ::FindWindowEx(subsubsubIDLWindow, btn, NULL, NULL);
+	if (getTextFromHandle(btn).find("Advance") != std::string::npos) {
+		hAdvancedBtn = btn;
+		log("Advanced button got.");
+	}
+	else return false;
 	//start to get text box
 	subsubIDLWindow = ::FindWindowEx(subIDLWindow, subsubIDLWindow, NULL, NULL);
 	HWND edit = ::FindWindowEx(subsubIDLWindow, NULL, NULL, NULL);
@@ -107,7 +117,7 @@ std::string Stealer::getTextFromHandle(HWND h) {
 
 bool Stealer::allHandleStolen()
 {
-	bool ready = (hSampleBtn && hSampleBackgroundBtn && hResetBtn && hGetIBtn && hCalCBtn && hGetSBtn && hGetGBtn && hStatusText);
+	bool ready = (hSampleBtn && hSampleBackgroundBtn && hResetBtn && hGetIBtn && hCalCBtn && hGetSBtn && hGetGBtn && hAdvancedBtn && hStatusText);
 	return ready;
 }
 
@@ -140,6 +150,9 @@ HWND Stealer::getGetSBtnHandle()
 HWND Stealer::getGetGBtnHandle()
 {
 	return hGetGBtn;
+}
+HWND Stealer::getAdvancedBtnHandle() {
+	return hAdvancedBtn;
 }
 HWND Stealer::getStatusTextHandle()
 {

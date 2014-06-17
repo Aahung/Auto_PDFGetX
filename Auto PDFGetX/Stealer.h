@@ -13,9 +13,10 @@ public:
 	HWND getCalCBtnHandle();
 	HWND getGetSBtnHandle();
 	HWND getGetGBtnHandle();
+	HWND getAdvancedBtnHandle();
 	HWND getStatusTextHandle();
 	std::string getTextFromHandle(HWND);
 
 private:
-	HWND hSampleBtn, hSampleBackgroundBtn, hResetBtn, hGetIBtn, hCalCBtn, hGetSBtn, hGetGBtn, hStatusText;
+	HWND hSampleBtn, hSampleBackgroundBtn, hResetBtn, hGetIBtn, hCalCBtn, hGetSBtn, hGetGBtn, hAdvancedBtn, hStatusText;
 };

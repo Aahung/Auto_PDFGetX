@@ -105,7 +105,8 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	case WM_CREATE:
 		{
 			aStealer = Stealer();
-			log("                                                                \r\n _____     _          _____ ____  _____ _____     _   __ __     \r\n|  _  |_ _| |_ ___   |  _  |    \\|   __|   __|___| |_|  |  |    \r\n|     | | |  _| . |  |   __|  |  |   __|  |  | -_|  _|-   -|    \r\n|__|__|___|_| |___|  |__|  |____/|__|  |_____|___|_| |__|__|    \r\n                                                                \r\n                                                                \r\n ___     ___      _                  _                          \r\n|_  |   |   |    | |_ _ _    ___ ___| |_ _ _ ___ ___            \r\n _| |_ _| | |    | . | | |  | .'| .'|   | | |   | . |           \r\n|_____|_|___|    |___|_  |  |__,|__,|_|_|___|_|_|_  |           \r\n                     |___|                      |___|           ");
+			log("   _         _            ___  ___  ___  ___     _  __  __\r\n  \/_\\  _   _| |_ ___     \/ _ \\\/   \\\/ __\\\/ _ \\___| |_\\ \\\/ \/\r\n \/\/_\\\\| | | | __\/ _ \\   \/ \/_)\/ \/\\ \/ _\\ \/ \/_\\\/ _ \\ __|\\  \/ \r\n\/  _  \\ |_| | || (_) | \/ ___\/ \/_\/\/ \/  \/ \/_\\\\  __\/ |_ \/  \\ \r\n\\_\/ \\_\/\\__,_|\\__\\___\/  \\\/  \/___,\'\\\/   \\____\/\\___|\\__\/_\/\\_\\\r\n                                                          \r\n   ___                     _                              \r\n  \/ __\\_   _    __ _  __ _| |__  _   _ _ __   __ _        \r\n \/__\\\/\/ | | |  \/ _` |\/ _` | \'_ \\| | | | \'_ \\ \/ _` |       \r\n\/ \\\/  \\ |_| | | (_| | (_| | | | | |_| | | | | (_| |       \r\n\\_____\/\\__, |  \\__,_|\\__,_|_| |_|\\__,_|_| |_|\\__, |       \r\n       |___\/                                 |___\/        ");
+			log("Version: 1.1");
 			log(">>>Before everything, config PDFGetX2 appreporately and press \"reset data\" button firse<<<");
 			log("Then, input folder path (starts with \"C:\\\") where .chi files located");
 			log("find prefixs for both sample and bg files.");
@@ -260,7 +261,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 					{
 						Robber aRobber = Robber(aStealer.getSampleBtnHandle(), aStealer.getSampleBackgroundBtnHandle(), aStealer.getResetBtnHandle(), aStealer.getGetIBtnHandle(),
 							aStealer.getCalCBtnHandle(), aStealer.getGetSBtnHandle(), aStealer.getGetGBtnHandle(), 
-							aStealer.getStatusTextHandle());
+							aStealer.getAdvancedBtnHandle(), aStealer.getStatusTextHandle());
 						
 						bool fail = false;
 						int count = 0;

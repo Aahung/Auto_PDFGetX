@@ -1,0 +1,8 @@
+S 00001 D:\PdNiCuP2001runcool\Silan_sample01_withflux_PDFrun01cool-00001.chi
+S 00002 D:\PdNiCuP2001runcool\Silan_sample01_withflux_PDFrun01cool-00002.chi
+B 00001 D:\PDF_holder_cooling_chi\Silan_holder_PDF_350mm_cool-00001.chi
+B 00002 D:\PDF_holder_cooling_chi\Silan_holder_PDF_350mm_cool-00002.chi
+B 00003 D:\PDF_holder_cooling_chi\Silan_holder_PDF_350mm_cool-00003.chi
+B 00004 D:\PDF_holder_cooling_chi\Silan_holder_PDF_350mm_cool-00004.chi
+B 00005 D:\PDF_holder_cooling_chi\Silan_holder_PDF_350mm_cool-00005.chi
+B 00006 D:\PDF_holder_cooling_chi\Silan_holder_PDF_350mm_cool-00006.chi

@@ -1,30 +1,96 @@
-08.05.2014 00:57:34:                                                                 
- _____     _          _____ ____  _____ _____     _   __ __     
-|  _  |_ _| |_ ___   |  _  |    \|   __|   __|___| |_|  |  |    
-|     | | |  _| . |  |   __|  |  |   __|  |  | -_|  _|-   -|    
-|__|__|___|_| |___|  |__|  |____/|__|  |_____|___|_| |__|__|    
-                                                                
-                                                                
- ___     ___      _                  _                          
-|_  |   |   |    | |_ _ _    ___ ___| |_ _ _ ___ ___            
- _| |_ _| | |    | . | | |  | .'| .'|   | | |   | . |           
-|_____|_|___|    |___|_  |  |__,|__,|_|_|___|_|_|_  |           
-                     |___|                      |___|           
-08.05.2014 00:57:34: >>>Before everything, config PDFGetX2 appreporately and press "reset data" button firse<<<
-08.05.2014 00:57:34: Then, input folder path (starts with "C:\") where .chi files located
-08.05.2014 00:57:34: find prefixs for both sample and bg files.
-08.05.2014 00:57:34: ---tip: the folder can have subfolder, and don't worry about other files.
-08.05.2014 00:57:34: Press "Generate file list" button, and then "Load file list"
-08.05.2014 00:57:34: ----------------------------
+17.06.2014 16:57:12:    _         _            ___  ___  ___  ___     _  __  __
+  /_\  _   _| |_ ___     / _ \/   \/ __\/ _ \___| |_\ \/ /
+ //_\\| | | | __/ _ \   / /_)/ /\ / _\ / /_\/ _ \ __|\  / 
+/  _  \ |_| | || (_) | / ___/ /_// /  / /_\\  __/ |_ /  \ 
+\_/ \_/\__,_|\__\___/  \/  /___,'\/   \____/\___|\__/_/\_\
+                                                          
+   ___                     _                              
+  / __\_   _    __ _  __ _| |__  _   _ _ __   __ _        
+ /__\// | | |  / _` |/ _` | '_ \| | | | '_ \ / _` |       
+/ \/  \ |_| | | (_| | (_| | | | | |_| | | | | (_| |       
+\_____/\__, |  \__,_|\__,_|_| |_|\__,_|_| |_|\__, |       
+       |___/                                 |___/        
+17.06.2014 16:57:12: Version: 1.1
+17.06.2014 16:57:12: >>>Before everything, config PDFGetX2 appreporately and press "reset data" button firse<<<
+17.06.2014 16:57:12: Then, input folder path (starts with "C:\") where .chi files located
+17.06.2014 16:57:12: find prefixs for both sample and bg files.
+17.06.2014 16:57:12: ---tip: the folder can have subfolder, and don't worry about other files.
+17.06.2014 16:57:12: Press "Generate file list" button, and then "Load file list"
+17.06.2014 16:57:12: ----------------------------
 Welcome to use "Auto PDFGetX", 
-08.05.2014 00:57:34: trying to get steal the button automatically...
-08.05.2014 00:57:34: Sample button got.
-08.05.2014 00:57:34: Sample Background button got.
-08.05.2014 00:57:34: Reset button got.
-08.05.2014 00:57:34: Get I button got.
-08.05.2014 00:57:34: Calc Correction button got.
-08.05.2014 00:57:34: Get S button got.
-08.05.2014 00:57:34: Get G button got.
-08.05.2014 00:57:34: Status Box spied.
-08.05.2014 00:57:34: All the objects under controlled.
-08.05.2014 00:57:34: :-)
+17.06.2014 16:57:12: trying to get steal the button automatically...
+17.06.2014 16:57:12: Sample button got.
+17.06.2014 16:57:12: Sample Background button got.
+17.06.2014 16:57:12: Reset button got.
+17.06.2014 16:57:12: Get I button got.
+17.06.2014 16:57:12: Calc Correction button got.
+17.06.2014 16:57:12: Get S button got.
+17.06.2014 16:57:12: Get G button got.
+17.06.2014 16:57:12: Advanced button got.
+17.06.2014 16:57:12: Status Box spied.
+17.06.2014 16:57:12: All the objects under controlled.
+17.06.2014 16:57:12: :-)
+17.06.2014 16:57:15: warning!!! sample file number and background file number not equal!!! 
+ following files have problems: 
+17.06.2014 16:57:15: 00003 has no samle file, will be ignored.
+17.06.2014 16:57:15: 00004 has no samle file, will be ignored.
+17.06.2014 16:57:15: 00005 has no samle file, will be ignored.
+17.06.2014 16:57:15: 00006 has no samle file, will be ignored.
+17.06.2014 16:57:17: loading sample file
+17.06.2014 16:57:17: File path box Found.
+17.06.2014 16:57:17: Trying to fill file path into box.
+17.06.2014 16:57:17: D:\PdNiCuP2001runcool\Silan_sample01_withflux_PDFrun01cool-00001.chi
+17.06.2014 16:57:17: Checked file path successfully filled.
+17.06.2014 16:57:18: Selected file.
+17.06.2014 16:57:18: loading bg file
+17.06.2014 16:57:18: Background file path box Found.
+17.06.2014 16:57:18: Trying to fill bg file path into box.
+17.06.2014 16:57:18: D:\PDF_holder_cooling_chi\Silan_holder_PDF_350mm_cool-00001.chi
+17.06.2014 16:57:18: Checked bg file path successfully filled.
+17.06.2014 16:57:19: Selected file.
+17.06.2014 16:57:19: Trying to reset data...
+17.06.2014 16:57:19: Data reset.
+17.06.2014 16:57:19: Trying to get I(q)...
+17.06.2014 16:57:19: I(q) got.
+17.06.2014 16:57:19: Trying to correct calculation...
+17.06.2014 16:57:20: Calculation corrected.
+17.06.2014 16:57:20: Trying to get S(q)...
+17.06.2014 16:57:22: S(q) got.
+17.06.2014 16:57:22: Trying to get G(r)...
+17.06.2014 16:57:25: G(r) got.
+17.06.2014 16:57:25: Trying to optimize G(r)...
+17.06.2014 16:57:25: Trying to get menu handle...
+17.06.2014 16:57:25: Optimized G(r).
+17.06.2014 16:57:31: Trying to get G(r)...
+17.06.2014 16:57:32: G(r) got.
+17.06.2014 16:57:32: D:\PdNiCuP2001runcool\Silan_sample01_withflux_PDFrun01cool-00001.chi finished
+17.06.2014 16:57:32: D:\PdNiCuP2001runcool\Silan_sample01_withflux_PDFrun01cool-00001.chi successfully processed in 0 try(tries).
+17.06.2014 16:57:32: loading sample file
+17.06.2014 16:57:36: File path box Found.
+17.06.2014 16:57:36: Trying to fill file path into box.
+17.06.2014 16:57:36: D:\PdNiCuP2001runcool\Silan_sample01_withflux_PDFrun01cool-00002.chi
+17.06.2014 16:57:36: Checked file path successfully filled.
+17.06.2014 16:57:36: Selected file.
+17.06.2014 16:57:36: loading bg file
+17.06.2014 16:57:37: Background file path box Found.
+17.06.2014 16:57:37: Trying to fill bg file path into box.
+17.06.2014 16:57:37: D:\PDF_holder_cooling_chi\Silan_holder_PDF_350mm_cool-00002.chi
+17.06.2014 16:57:37: Checked bg file path successfully filled.
+17.06.2014 16:57:37: Selected file.
+17.06.2014 16:57:37: Trying to reset data...
+17.06.2014 16:57:38: Data reset.
+17.06.2014 16:57:38: Trying to get I(q)...
+17.06.2014 16:57:38: I(q) got.
+17.06.2014 16:57:38: Trying to correct calculation...
+17.06.2014 16:57:39: Calculation corrected.
+17.06.2014 16:57:39: Trying to get S(q)...
+17.06.2014 16:57:41: S(q) got.
+17.06.2014 16:57:41: Trying to get G(r)...
+17.06.2014 16:57:45: G(r) got.
+17.06.2014 16:57:45: Trying to optimize G(r)...
+17.06.2014 16:57:45: Trying to get menu handle...
+17.06.2014 16:57:45: Optimized G(r).
+17.06.2014 16:57:45: Trying to get G(r)...
+17.06.2014 16:57:49: G(r) got.
+17.06.2014 16:57:49: D:\PdNiCuP2001runcool\Silan_sample01_withflux_PDFrun01cool-00002.chi finished
+17.06.2014 16:57:49: D:\PdNiCuP2001runcool\Silan_sample01_withflux_PDFrun01cool-00002.chi successfully processed in 0 try(tries).
