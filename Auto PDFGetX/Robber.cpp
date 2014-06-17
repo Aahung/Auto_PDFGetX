@@ -203,15 +203,19 @@ bool Robber::process(std::string file_path, std::string bg_file_path)
 	TCHAR buf[64];
 	GetMenuString(menu, firstBtn, buf, 20, MF_BYCOMMAND);
 	if (buf[0] == 'O' && buf[1] == 'p') {
+		// save current cursor
 		POINT p;
 		GetCursorPos(&p);
+		// get "Optimize G(r) pos
 		RECT Rect;
 		GetWindowRect(hMenu, &Rect);
 		int x = (Rect.left + Rect.right) / 2;
 		int y = Rect.top + 10;
+		// set cursor and click at button
 		SetCursorPos(x, y);
 		mouse_event(MOUSEEVENTF_LEFTDOWN, x, y, 0, 0);
 		mouse_event(MOUSEEVENTF_LEFTUP, x, y, 0, 0);
+		// recovery the previous cursor pos
 		SetCursorPos(p.x, p.y);
 		log("Optimized G(r).");
 	}
